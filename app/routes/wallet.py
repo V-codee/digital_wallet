@@ -7,11 +7,13 @@ from app.schemas import Deposit
 from datetime import datetime
 from app import models, schemas
 import httpx
-
+import os
+from dotenv import load_dotenv
 
 router = APIRouter(prefix="/wallet",tags=["Wallet"])
 
-CURRENCY_API_KEY = "cur_live_F3d7TuzcB79LNbGLeqk8fHJpY1wwk6JzH9WPP0si"
+load_dotenv()
+CURRENCY_API_KEY = os.getenv("CURRENCY_API_KEY")
 
 #Get wallet balance
 @router.get("/balance")
